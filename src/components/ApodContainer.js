@@ -9,23 +9,39 @@ export default function BiComponent(props) {
   if (!data) return <h3>Yükleniyor...</h3>;
   return (
     <div>
-      <p>{data.date}</p>
-      <label htmlFor="apodDate">apodDate:</label>
-      <input
-        onChange={(e) => dateChangeHandler(e)}
-        type="date"
-        value={currentDate}
-        name="apodDate"
-      ></input>
-      {data.media_type === "image" && (
-        <img src={data.hdurl} alt={data.title} width="500" height="600" />
-      )}
-      <p>{data.service_version}</p>
-      <p>{data.title}</p>
-      {data.media_type === "video" && (
-        <iframe width="420" height="315" src={data.url}></iframe>
-      )}
-      <p>{data.explanation}</p>
+      <div className="container">
+        <div
+          className="background"
+          style={{ backgroundImage: `url(${data.hdurl})` }}
+        ></div>
+        <div className="cerceve">
+          <div className="date">
+            <p>{data.date}</p>
+            <label htmlFor="apodDate">apodDate:</label>
+            <input
+              onChange={(e) => dateChangeHandler(e)}
+              type="date"
+              value={currentDate}
+              name="apodDate"
+            ></input>
+          </div>
+          <div className="govde">
+            {data.media_type === "image" && (
+              <img src={data.hdurl} alt={data.title} width="700" height="500" />
+            )}
+            {data.media_type === "video" && (
+              <iframe width="520" height="400" src={data.url}></iframe>
+            )}
+            <div className="sag-textler">
+              <h1>{data.title}</h1>
+              <div className="icerik-yazi">
+                <h4>{data.copyright}</h4>
+                <p>{data.explanation}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

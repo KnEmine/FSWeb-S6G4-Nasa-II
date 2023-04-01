@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import "./App.css";
 import { useEffect, useState } from "react";
-import ApodContainer from "./components/ApodContainer";
+import Component from "./Bileşenler/Component.js";;
 
 function App() {
   const [apodData, setApodData] = useState();
@@ -15,7 +15,7 @@ function App() {
     axios
       .get("https://api.nasa.gov/planetary/apod", {
         params: {
-          api_key: "DEMO_KEY",
+          api_key: "pPTsu2lZnwq1biDViyAeBjAeb4e85iJirWWkfYwg",
           date: datePicker,
         },
       })
@@ -23,18 +23,17 @@ function App() {
         console.log(response);
         setApodData(response.data);
       })
-      .catch(function (error) {
+      .catch(function(error) {
         console.log(error);
       })
-      .finally(function () {
+      .finally(functio () {});
+       }, [datePicker]);
         // always executed
-      });
-    console.log("sayfam render oldu");
-  }, [datePicker]);
-
+      
+    
   return (
     <div className="App">
-      <ApodContainer
+      <Component
         data={apodData}
         dateChange={setDatePicker}
         currentDate={datePicker}
